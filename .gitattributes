@@ -1,1 +1,3 @@
-/lib/*.js linguist-vendored=true
+lib/.*\.js$ linguist-vendored=true
+lib/.*\.css$ linguist-vendored=true
+lib/.*\.html$ linguist-vendored=true
