@@ -10,32 +10,41 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>paper-button a11y tests</title>
+  <title>core-input a11y tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <script src="../../webcomponentsjs/webcomponents.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
 
-  <link href="../paper-button.html" rel="import">
+  <link href="../core-input.html" rel="import">
 
 </head>
 <body>
 
-  <paper-button id="button1" disabled>button</paper-button>
+  <input id="input1" is="core-input" placeholder="label">
+  <input id="input2" is="core-input" disabled>
 
   <script>
 
-    var b1 = document.getElementById('button1');
+    var i1 = document.getElementById('input1');
+    var i2 = document.getElementById('input2');
 
-    test('aria role is a button', function() {
-      assert.strictEqual('button', b1.getAttribute('role'));
+    test('aria-label set to placeholder', function(done) {
+      assert.strictEqual('label', i1.getAttribute('aria-label'));
+      // test failing on polyfill due to https://github.com/Polymer/webcomponentsjs-dev/issues/13
+      // i1.placeholder = 'new label';
+      i1.setAttribute('placeholder', 'new label');
+      flush(function() {
+        assert.strictEqual(i1.getAttribute('aria-label'), 'new label');
+        done();
+      });
     });
 
     test('aria-disabled is set', function(done) {
-      assert.ok(b1.hasAttribute('aria-disabled'));
-      b1.removeAttribute('disabled');
-      asyncPlatformFlush(function() {
-        assert.ok(!b1.hasAttribute('aria-disabled'));
+      assert.ok(i2.hasAttribute('aria-disabled'));
+      i2.removeAttribute('disabled');
+      flush(function() {
+        assert.ok(!i2.hasAttribute('aria-disabled'));
         done();
       });
     });

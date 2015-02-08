@@ -1,4 +1,4 @@
-name: 'dartpad_mobile'
+name: dartpad_mobile
 version: 0.0.1
 description: >
   An absolute bare-bones web app.
@@ -9,6 +9,10 @@ environment:
   sdk: '>=1.0.0 <2.0.0'
 
 dependencies:
-  browser: any
-  dartpad_ui:
-    path: ../dartpad_ui
+  dart_pad:
+    path: ../dart-pad
+  dart_to_js_script_rewriter: '>= 0.1.0 < 0.2.0'
+
+transformers:
+- dart_to_js_script_rewriter
+
