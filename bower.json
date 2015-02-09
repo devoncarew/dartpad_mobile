@@ -34,6 +34,7 @@
     "core-drawer-panel": "Polymer/core-drawer-panel#~0.5.2",
     "core-pages": "Polymer/core-pages#~0.5.2",
     "paper-progress": "polymer/paper-progress#~0.5.4",
-    "paper-shadow": "polymer/paper-shadow#~0.5.4"
+    "paper-shadow": "polymer/paper-shadow#~0.5.4",
+    "core-animated-pages": "polymer/core-animated-pages#~0.5.4"
   }
 }

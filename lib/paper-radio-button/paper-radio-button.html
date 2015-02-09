@@ -18,7 +18,7 @@ are inside a radio group, only one radio button in the group can be checked.
 Example:
 
     <paper-radio-button></paper-radio-button>
-    
+
 Styling radio button:
 
 To change the ink color for checked state:
@@ -26,9 +26,9 @@ To change the ink color for checked state:
     paper-radio-button::shadow #ink[checked] {
       color: #4285f4;
     }
-    
+
 To change the radio checked color:
-    
+
     paper-radio-button::shadow #onRadio {
       background-color: #4285f4;
     }
@@ -42,9 +42,9 @@ To change the ink color for unchecked state:
     paper-radio-button::shadow #ink {
       color: #b5b5b5;
     }
-    
+
 To change the radio unchecked color:
-    
+
     paper-radio-button::shadow #offRadio {
       border-color: #b5b5b5;
     }
@@ -63,35 +63,35 @@ To change the radio unchecked color:
   <link rel="stylesheet" href="paper-radio-button.css">
 
   <core-a11y-keys target="{{}}" keys="space" on-keys-pressed="{{tap}}"></core-a11y-keys>
-  
+
   <div id="radioContainer" class="{{ {labeled: label} | tokenList }}">
-  
+
     <div id="offRadio"></div>
     <div id="onRadio"></div>
-    
+
     <paper-ripple id="ink" class="circle recenteringTouch" checked?="{{!checked}}"></paper-ripple>
-    
+
   </div>
-  
+
   <div id="radioLabel" aria-hidden="true" hidden?="{{!label}}">{{label}}<content></content></div>
-  
+
 </template>
 <script>
 
   Polymer('paper-radio-button', {
-    
+
     /**
      * Fired when the checked state changes due to user interaction.
      *
      * @event change
      */
-     
+
     /**
      * Fired when the checked state changes.
      *
      * @event core-change
      */
-    
+
     publish: {
       /**
        * Gets or sets the state, `true` is checked and `false` is unchecked.
@@ -101,7 +101,7 @@ To change the radio unchecked color:
        * @default false
        */
       checked: {value: false, reflect: true},
-      
+
       /**
        * The label for the radio button.
        *
@@ -110,7 +110,7 @@ To change the radio unchecked color:
        * @default ''
        */
       label: '',
-      
+
       /**
        * Normally the user cannot uncheck the radio button by tapping once
        * checked.  Setting this property to `true` makes the radio button
@@ -121,7 +121,7 @@ To change the radio unchecked color:
        * @default false
        */
       toggles: false,
-      
+
       /**
        * If true, the user cannot interact with this element.
        *
@@ -131,11 +131,11 @@ To change the radio unchecked color:
        */
       disabled: {value: false, reflect: true}
     },
-    
+
     eventDelegates: {
       tap: 'tap'
     },
-    
+
     tap: function() {
       if (this.disabled) {
         return;
@@ -146,21 +146,21 @@ To change the radio unchecked color:
         this.fire('change');
       }
     },
-    
+
     toggle: function() {
       this.checked = !this.toggles || !this.checked;
     },
-    
+
     checkedChanged: function() {
       this.setAttribute('aria-checked', this.checked ? 'true' : 'false');
       this.fire('core-change');
     },
-    
+
     labelChanged: function() {
       this.setAttribute('aria-label', this.label);
     }
-    
+
   });
-  
+
 </script>
 </polymer-element>

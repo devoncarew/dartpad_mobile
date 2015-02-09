@@ -13,7 +13,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   transition: transform 0.2s ease-in-out, opacity 0.2s ease-in;
 }
 
-
 :host(.core-transition.core-opened) {
   opacity: 1;
   -webkit-transform: translateZ(0);

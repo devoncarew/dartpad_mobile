@@ -24,7 +24,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   need to be notified when they are resized or un-hidden by their parents in order to take
   action on their new measurements).
 
-  Elements that perform measurement should add the `Core.Resizable` mixin to their 
+  Elements that perform measurement should add the `Core.Resizable` mixin to their
   Polymer prototype definition and listen for the `core-resize` event on themselves.
   This event will be fired when they become showing after having been hidden,
   when they are resized explicitly by a `CoreResizer`, or when the window has been resized.
@@ -88,7 +88,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   action on their new measurements).
 
   Elements that cause their children to be resized (e.g. a splitter control) or hide/show
-  their children (e.g. overlay) should add the `Core.CoreResizer` mixin to their 
+  their children (e.g. overlay) should add the `Core.CoreResizer` mixin to their
   Polymer prototype definition and then call `this.notifyResize()` any time the element
   resizes or un-hides its children.
 
@@ -189,8 +189,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     // Private: Handle requests for resize
     _handleResizeRequested: function(e) {
       var target = e.path[0];
-      if ((target == this) || 
-          (target == this._resizerListener) || 
+      if ((target == this) ||
+          (target == this._resizerListener) ||
           (this._resizerPeers && this._resizerPeers.indexOf(target) < 0)) {
         return;
       }

@@ -15,4 +15,3 @@ dependencies:
 
 transformers:
 - dart_to_js_script_rewriter
-

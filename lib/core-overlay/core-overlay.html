@@ -19,14 +19,14 @@ out hidden and is displayed by setting its `opened` property to true.
 A `core-overlay's` opened state can be toggled by calling the `toggle`
 method.
 
-The `core-overlay` will, by default, show/hide itself when it's opened. The 
-`target` property may be set to another element to cause that element to 
+The `core-overlay` will, by default, show/hide itself when it's opened. The
+`target` property may be set to another element to cause that element to
 be shown when the overlay is opened.
 
 It's common to want a `core-overlay` to animate to its opened
 position. The `core-overlay` element uses a `core-transition` to handle
-animation. The default transition is `core-transition-fade` which 
-causes the overlay to fade in when displayed. See 
+animation. The default transition is `core-transition-fade` which
+causes the overlay to fade in when displayed. See
 <a href="../core-transition/">`core-transition`</a> for more
 information about customizing a `core-overlay's` opening animation. The
 `backdrop` property can be set to true to show a backdrop behind the overlay
@@ -48,14 +48,14 @@ presses the escape key. This behavior can be turned off via the
       <button core-overlay-toggle>OK</button>
     </core-overlay>
 
-`core-overlay` will automatically size and position itself according to the 
+`core-overlay` will automatically size and position itself according to the
 following rules. The overlay's size is constrained such that it does not
-overflow the screen. This is done by setting maxHeight/maxWidth on the 
+overflow the screen. This is done by setting maxHeight/maxWidth on the
 `sizingTarget`. If the `sizingTarget` already has a setting for one of these
 properties, it will not be overridden. The overlay should
 be positioned via css or imperatively using the `core-overlay-position` event.
 If the overlay is not positioned vertically via setting `top` or `bottom`, it
-will be centered vertically. The same is true horizontally via a setting to 
+will be centered vertically. The same is true horizontally via a setting to
 `left` or `right`. In addition, css `margin` can be used to provide some space
 around the overlay. This can be used to ensure
 that, for example, a drop shadow is always visible around the overlay.
@@ -121,7 +121,7 @@ object like this: `{v: 'top', h: 'right'}`.
 
     publish: {
       /**
-       * The target element that will be shown when the overlay is 
+       * The target element that will be shown when the overlay is
        * opened. If unspecified, the core-overlay itself is the target.
        *
        * @attribute target
@@ -130,13 +130,12 @@ object like this: `{v: 'top', h: 'right'}`.
        */
       target: null,
 
-
       /**
-       * A `core-overlay`'s size is guaranteed to be 
+       * A `core-overlay`'s size is guaranteed to be
        * constrained to the window size. To achieve this, the sizingElement
-       * is sized with a max-height/width. By default this element is the 
+       * is sized with a max-height/width. By default this element is the
        * target element, but it can be specifically set to a specific element
-       * inside the target if that is more appropriate. This is useful, for 
+       * inside the target if that is more appropriate. This is useful, for
        * example, when a region inside the overlay should scroll if needed.
        *
        * @attribute sizingTarget
@@ -144,7 +143,7 @@ object like this: `{v: 'top', h: 'right'}`.
        * @default the target element
        */
       sizingTarget: null,
-    
+
       /**
        * Set opened to true to show an overlay and to false to hide it.
        * A `core-overlay` may be made initially opened by setting its
@@ -164,7 +163,7 @@ object like this: `{v: 'top', h: 'right'}`.
        * @attribute backdrop
        * @type boolean
        * @default false
-       */    
+       */
       backdrop: false,
 
       /**
@@ -175,7 +174,7 @@ object like this: `{v: 'top', h: 'right'}`.
        * @default false
       */
       layered: false,
-    
+
       /**
        * By default an overlay will close automatically if the user
        * taps outside it or presses the escape key. Disable this
@@ -219,8 +218,8 @@ object like this: `{v: 'top', h: 'right'}`.
       closeSelector: '',
 
       /**
-       * The transition property specifies a string which identifies a 
-       * <a href="../core-transition/">`core-transition`</a> element that 
+       * The transition property specifies a string which identifies a
+       * <a href="../core-transition/">`core-transition`</a> element that
        * will be used to help the overlay open and close. The default
        * `core-transition-fade` will cause the overlay to fade in and out.
        *
@@ -265,7 +264,7 @@ object like this: `{v: 'top', h: 'right'}`.
       Polymer.flush();
     },
 
-    /** 
+    /**
      * Toggle the opened state of the overlay.
      * @method toggle
      */
@@ -273,7 +272,7 @@ object like this: `{v: 'top', h: 'right'}`.
       this.opened = !this.opened;
     },
 
-    /** 
+    /**
      * Open the overlay. This is equivalent to setting the `opened`
      * property to true.
      * @method open
@@ -282,8 +281,8 @@ object like this: `{v: 'top', h: 'right'}`.
       this.opened = true;
     },
 
-    /** 
-     * Close the overlay. This is equivalent to setting the `opened` 
+    /**
+     * Close the overlay. This is equivalent to setting the `opened`
      * property to false.
      * @method close
      */
@@ -430,7 +429,7 @@ object like this: `{v: 'top', h: 'right'}`.
           this.layer.removeElement(this.target);
         }
       }
-      this.fire('core-overlay-' + (this.opened ? 'open' : 'close') + 
+      this.fire('core-overlay-' + (this.opened ? 'open' : 'close') +
           '-completed');
       this.applyFocus();
     },
@@ -559,7 +558,7 @@ object like this: `{v: 'top', h: 'right'}`.
       var flip = (positionedBy === end);
       var m = flip ? start : end;
       var ws = window['inner' + extent];
-      var o = dims.margin[m] + (flip ? ws - rect[end] : 
+      var o = dims.margin[m] + (flip ? ws - rect[end] :
           rect[start]);
       var offset = 'offset' + extent;
       var o2 = this.target[offset] - this.sizingTarget[offset];
@@ -568,9 +567,9 @@ object like this: `{v: 'top', h: 'right'}`.
 
     // vertically and horizontally center if not positioned
     repositionTarget: function() {
-      // only center if position fixed.      
+      // only center if position fixed.
       if (this.dimensions.position.css !== 'fixed') {
-        return; 
+        return;
       }
       if (!this.dimensions.position.v) {
         var t = (window.innerHeight - this.target.offsetHeight) / 2;
@@ -587,11 +586,11 @@ object like this: `{v: 'top', h: 'right'}`.
 
     resetTargetDimensions: function() {
       if (!this.dimensions || !this.dimensions.size.v) {
-        this.sizingTarget.style.maxHeight = '';  
+        this.sizingTarget.style.maxHeight = '';
         this.target.style.top = '';
       }
       if (!this.dimensions || !this.dimensions.size.h) {
-        this.sizingTarget.style.maxWidth = '';  
+        this.sizingTarget.style.maxWidth = '';
         this.target.style.left = '';
       }
       this.dimensions = null;
@@ -610,9 +609,9 @@ object like this: `{v: 'top', h: 'right'}`.
         }
       }
     },
-    
+
     // We use the traditional approach of capturing events on document
-    // to to determine if the overlay needs to close. However, due to 
+    // to to determine if the overlay needs to close. However, due to
     // ShadowDOM event retargeting, the event target is not useful. Instead
     // of using it, we attempt to close asynchronously and prevent the close
     // if a tap event is immediately heard on the target.
@@ -635,7 +634,7 @@ object like this: `{v: 'top', h: 'right'}`.
 
     /**
      * Extensions of core-overlay should implement the `resizeHandler`
-     * method to adjust the size and position of the overlay when the 
+     * method to adjust the size and position of the overlay when the
      * browser window resizes.
      * @method resizeHandler
      */
@@ -714,11 +713,11 @@ object like this: `{v: 'top', h: 'right'}`.
       setZ(overlay, '');
     }
   }
-  
+
   function applyOverlayZ(overlay, aboveZ) {
     setZ(overlay.target, aboveZ + 2);
   }
-  
+
   function setZ(element, z) {
     element.style.zIndex = z;
   }
@@ -726,9 +725,9 @@ object like this: `{v: 'top', h: 'right'}`.
   function currentOverlay() {
     return overlays[overlays.length-1];
   }
-  
+
   var DEFAULT_Z = 10;
-  
+
   function currentOverlayZ() {
     var z;
     var current = currentOverlay();
@@ -740,7 +739,7 @@ object like this: `{v: 'top', h: 'right'}`.
     }
     return z || DEFAULT_Z;
   }
-  
+
   function focusOverlay() {
     var current = currentOverlay();
     // We have to be careful to focus the next overlay _after_ any current

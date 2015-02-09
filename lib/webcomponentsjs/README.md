@@ -11,7 +11,6 @@ A suite of polyfills supporting the [Web Components](http://webcomponents.org) s
 
 This also folds in polyfills for `MutationObserver` and `WeakMap`.
 
-
 ## Releases
 
 Pre-built (concatenated & minified) versions of the polyfills are maintained in the [tagged versions](https://github.com/webcomponents/webcomponentsjs/releases) of this repo. There are two variants:
@@ -19,7 +18,6 @@ Pre-built (concatenated & minified) versions of the polyfills are maintained in 
 `webcomponents.js` includes all of the polyfills.
 
 `webcomponents-lite.js` includes all polyfills except for shadow DOM.
-
 
 ### Manually Building
 
@@ -40,5 +38,3 @@ The builds will be placed into the `dist/` directory.
 ## Contribute
 
 See the [contributing guide](CONTRIBUTING.md)
-
-

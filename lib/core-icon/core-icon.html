@@ -25,14 +25,14 @@ Example setting size to 32px x 32px:
       }
     </style>
 
-The core elements include several sets of icons. 
+The core elements include several sets of icons.
 To use the default set of icons, import  `core-icons.html` and use the `icon` attribute to specify an icon:
 
     &lt;!-- import default iconset and core-icon --&gt;
     <link rel="import" href="/components/core-icons/core-icons.html">
 
     <core-icon icon="menu"></core-icon>
-    
+
 To use a different built-in set of icons, import  `core-icons/<iconset>-icons.html`, and
 specify the icon as `<iconset>:<icon>`. For example:
 
@@ -40,8 +40,8 @@ specify the icon as `<iconset>:<icon>`. For example:
     <link rel="import" href="/components/core-icons/communication-icons.html">
 
     <core-icon icon="communication:email"></core-icon>
-    
-You can also create custom icon sets of bitmap or SVG icons. 
+
+You can also create custom icon sets of bitmap or SVG icons.
 
 Example of using an icon named `cherry` from a custom iconset with the ID `fruit`:
 
@@ -63,10 +63,10 @@ See [core-icons](http://www.polymer-project.org/components/core-icons/demo.html)
 <polymer-element name="core-icon" attributes="src icon alt">
 <script>
 (function() {
-  
+
   // mono-state
   var meta;
-  
+
   Polymer('core-icon', {
 
     /**
@@ -95,7 +95,7 @@ See [core-icons](http://www.polymer-project.org/components/core-icons/demo.html)
      * If alt is present and not empty, it will set the element's role to img and add an aria-label whose content matches alt.
      * If alt is present and is an empty string, '', it will hide the element from the accessibility layer
      * If alt is not present, it will set the element's role to img and the element will fallback to using the icon attribute for its aria-label.
-     * 
+     *
      * @attribute alt
      * @type string
      * @default ''
@@ -196,7 +196,7 @@ See [core-icons](http://www.polymer-project.org/components/core-icons/demo.html)
     }
 
   });
-  
+
 })();
 </script>
 

@@ -75,7 +75,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         this.cacheDomLocation(n);
         this.updateEventController(n);
         insertionPoint.__contents.push(n);
-        parent.appendChild(n);  
+        parent.appendChild(n);
       }
     },
     updateEventController: function(element) {
@@ -100,7 +100,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         element.__contents = null;
       }
       if (element.__parentNode) {
-        var n = element.__nextElementSibling && element.__nextElementSibling 
+        var n = element.__nextElementSibling && element.__nextElementSibling
             === element.__parentNode ? element.__nextElementSibling : null;
         element.__parentNode.insertBefore(element, n);
       }
@@ -110,7 +110,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       element.__parentNode = element.parentNode;
     }
   });
-  
+
 })();
 </script>
 </polymer-element>

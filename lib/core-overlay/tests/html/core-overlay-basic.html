@@ -21,7 +21,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       margin: 0;
       height: 100%;
     }
-    
+
     #basic {
       height: 200px;
       width: 300px;
@@ -73,7 +73,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var target = document.querySelector('#target');
     var targeted = document.querySelector('#targeted');
     targeted.target = target;
-    // 
+    //
     var layered = document.querySelector('#layered');
     var backdrop = document.querySelector('#backdrop');
 
@@ -102,7 +102,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         chai.assert.equal(basic.opened, false, 'overlay starts closed');
         chai.assert.equal(getComputedStyle(basic).display, 'none', 'overlay starts hidden');
         testOpenEvents(basic, next);
-        
+
       },
       // targeted overlay events
       function(next) {

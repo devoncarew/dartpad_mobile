@@ -28,7 +28,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var range = document.querySelector('core-range');
 
     suite('basic', function() {
-      
+
       test('check default', function() {
         assert.equal(range.min, 0);
         assert.equal(range.max, 100);
@@ -47,7 +47,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           });
         });
       });
-      
+
       test('set max', function(done) {
         range.max = 10;
         range.value = 11;
@@ -56,7 +56,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           done();
         });
       });
-      
+
       test('test ratio', function(done) {
         range.max = 10;
         range.value = 5;
@@ -65,7 +65,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           done();
         });
       });
-      
+
       test('set min', function(done) {
         range.min = 10
         range.max = 50;
@@ -79,7 +79,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           });
         });
       });
-      
+
       test('set step', function(done) {
         range.min = 0;
         range.max = 10;

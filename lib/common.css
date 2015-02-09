@@ -1,0 +1,29 @@
+core-header-panel {
+  background: white;
+}
+
+paper-tabs, core-toolbar {
+  background-color: #0084c5;
+  color: #eee;
+}
+
+paper-tabs {
+  height: 32px;
+}
+
+.page-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.page-title, paper-tab {
+  font-family: 'Montserrat', sans-serif;
+}
+
+core-toolbar /deep/ .toolbar-tools {
+  padding: 0;
+}
+
+paper-tab {
+  max-width: 220px;
+}

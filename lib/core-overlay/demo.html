@@ -55,7 +55,7 @@
 	<script>
 
 	Polymer('x-dialog', {
-	
+
 		ready: function() {
 			this.$.overlay.target = this;
 		},
@@ -68,7 +68,6 @@
 
 	</script>
 	</polymer-element>
-
 
 	<!-- an element that uses the x-dialog element and core-overlay -->
 	<polymer-element name="x-container">
@@ -133,21 +132,21 @@
 		<button on-tap="{{tapHandler}}">Toggle Dialog</button>
 	</template>
 	<script>
-	
+
 	Polymer('x-container', {
-	
+
 		inputHandler: function(e) {
 			if (e.target.value === 'something') {
 				this.$.confirmation.toggle();
 			}
 		},
-	
+
 		tapHandler: function() {
 			this.$.dialog.toggle();
 		}
-	
+
 	});
-	
+
 	</script>
 	</polymer-element>
 
