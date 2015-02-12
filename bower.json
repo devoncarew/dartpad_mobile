@@ -35,6 +35,10 @@
     "core-pages": "Polymer/core-pages#~0.5.2",
     "paper-progress": "polymer/paper-progress#~0.5.4",
     "paper-shadow": "polymer/paper-shadow#~0.5.4",
-    "core-animated-pages": "polymer/core-animated-pages#~0.5.4"
+    "core-animated-pages": "polymer/core-animated-pages#~0.5.4",
+    "core-scaffold": "polymer/core-scaffold#~0.5.4",
+    "core-item": "polymer/core-item#~0.5.4",
+    "core-menu": "polymer/core-menu#~0.5.4",
+    "paper-menu-button": "polymer/paper-menu-button#~0.5.4"
   }
 }

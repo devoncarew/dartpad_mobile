@@ -1,0 +1,57 @@
+core-header-panel {
+  background: white;
+}
+
+paper-tabs, core-toolbar {
+  background-color: #009688;
+  color: #FFFFFF;
+}
+
+#nav-header {
+  background-color: #00796B;
+}
+
+paper-tabs {
+  height: 32px;
+}
+
+.page-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.page-title, paper-tab {
+  font-family: 'Montserrat', sans-serif;
+}
+
+core-toolbar /deep/ .toolbar-tools {
+  padding: 0;
+}
+
+paper-tab {
+  max-width: 220px;
+}
+
+/* #42b1a6 */
+
+paper-toggle-button::shadow .toggle {
+  background-color: #fff;
+}
+
+paper-toggle-button::shadow [checked] .toggle-ink {
+  color: #42b1a6;
+}
+
+/*paper-toggle-button::shadow [checked] .toggle {
+  background-color: #00796B;
+}*/
+
+paper-fab {
+  background-color: #FF5252;
+}
+
+.overflow-menu {
+  left: -95px;
+  top: 38px;
+  color: #333;
+}

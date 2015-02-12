@@ -10,13 +10,13 @@ import 'dart:html';
 import 'package:dart_pad/elements/elements.dart';
 
 class DartpadApp extends DElement {
-  PaperAnimatedPages pages;
+  CoreAnimatedPages pages;
 
   EditPage editPage;
   ExecPage execPage;
 
   DartpadApp(Element element) : super(element) {
-    pages = new PaperAnimatedPages(
+    pages = new CoreAnimatedPages(
         element.shadowRoot.querySelector('core-animated-pages'));
     editPage = new EditPage(this, pages.element.querySelector('dartpad-edit-page'));
     execPage = new ExecPage(this, pages.element.querySelector('dartpad-exec-page'));
@@ -123,9 +123,8 @@ class PaperProgress extends DElement {
   }
 }
 
-// core-animated-pages
-class PaperAnimatedPages extends DElement {
-  PaperAnimatedPages(Element element) : super(element);
+class CoreAnimatedPages extends DElement {
+  CoreAnimatedPages(Element element) : super(element);
 
   String get selected => getAttr('selected');
   set selected(String value) => setAttr('selected', value);
