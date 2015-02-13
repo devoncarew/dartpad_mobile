@@ -39,6 +39,7 @@
     "core-scaffold": "polymer/core-scaffold#~0.5.4",
     "core-item": "polymer/core-item#~0.5.4",
     "core-menu": "polymer/core-menu#~0.5.4",
-    "paper-menu-button": "polymer/paper-menu-button#~0.5.4"
+    "paper-menu-button": "polymer/paper-menu-button#~0.5.4",
+    "core-splitter": "polymer/core-splitter#~0.5.4"
   }
 }

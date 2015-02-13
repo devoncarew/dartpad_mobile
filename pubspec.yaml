@@ -1,14 +1,14 @@
 name: dartpad_mobile
 version: 0.0.1
-description: >
-  An absolute bare-bones web app.
-#author: <your name> <email@example.com>
+description: A mobile UI for Dart Pad.
+author: Dart Team <misc@dartlang.org>
 #homepage: https://www.example.com
 
 environment:
   sdk: '>=1.0.0 <2.0.0'
 
 dependencies:
+  codemirror: any
   dart_pad:
     path: ../dart-pad
   dart_to_js_script_rewriter: '>= 0.1.0 < 0.2.0'
