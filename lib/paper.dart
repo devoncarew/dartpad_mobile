@@ -6,9 +6,41 @@ import 'dart:html';
 
 import 'core.dart';
 
+class PaperActionDialog extends PaperDialogBase {
+  PaperActionDialog() : super('paper-action-dialog');
+  PaperActionDialog.from(HtmlElement element) : super.from(element);
+
+  void makeAffirmative(CoreElement element) =>
+      element.toggleAttribute('affirmative', true);
+
+  void makeDismissive(CoreElement element) =>
+      element.toggleAttribute('dismissive', true);
+}
+
+class PaperButton extends PaperButtonBase {
+  PaperButton({String text}) : super('paper-button', text: text);
+  PaperButton.from(HtmlElement element) : super.from(element);
+
+  bool get raised => hasAttribute('raised');
+  set raised(bool value) => toggleAttribute('raised', value);
+}
+
 abstract class PaperButtonBase extends CoreElement {
   PaperButtonBase(String tag, {String text}) : super(tag, text: text);
   PaperButtonBase.from(HtmlElement element) : super.from(element);
+}
+
+class PaperDialog extends PaperDialogBase {
+  PaperDialog() : super('paper-dialog');
+  PaperDialog.from(HtmlElement element) : super.from(element);
+}
+
+class PaperDialogBase extends CoreOverlay {
+  PaperDialogBase([String tag]) : super(tag == null ? 'paper-dialog-base' : tag);
+  PaperDialogBase.from(HtmlElement element) : super.from(element);
+
+  String get heading => attribute('heading');
+  set heading(String value) => setAttribute('heading', value);
 }
 
 class PaperDropdown extends CoreDropdown {
@@ -88,15 +120,35 @@ class PaperToast extends CoreElement {
   String get text => attribute('text');
   set text(String value) => setAttribute('text', value);
 
+  /**
+   * The duration in milliseconds to show the toast (this defaults to 3000ms).
+   */
+  // TODO: set the JS property
+  set duration(int value) => setAttribute('duration', '${value}');
+
   /// Set opened to true to show the toast and to false to hide it.
   bool get opened => hasAttribute('opened');
   set opened(bool value) => toggleAttribute('opened', value);
+
+  /// If true, the toast can't be swiped.
+  bool get swipeDisabled => hasAttribute('swipeDisabled');
+  set swipeDisabled(bool value) => toggleAttribute('swipeDisabled', value);
+
+  /**
+   * By default, the toast will close automatically if the user taps outside it
+   * or presses the escape key. Disable this behavior by setting the
+   * autoCloseDisabled property to true.
+   */
+  bool get autoCloseDisabled => hasAttribute('autoCloseDisabled');
+  set autoCloseDisabled(bool value) => toggleAttribute('autoCloseDisabled', value);
 
   /// Toggle the opened state of the toast.
   void toggle() => call('toggle');
 
   /// Show the toast for the specified duration.
-  void show() => call('show');
+  void show([Duration duration]) {
+    call('show', duration != null ? [duration.inMilliseconds] : null);
+  }
 
   /// Dismiss the toast and hide it.
   void dismiss() => call('dismiss');

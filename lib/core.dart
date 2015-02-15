@@ -170,6 +170,7 @@ class CoreToolbar extends CoreElement {
 
 class CoreElement extends WebElement {
   static CoreElement div() => new CoreElement('div');
+  static CoreElement p([String text]) => new CoreElement('p', text: text);
   static CoreElement section() => new CoreElement('section');
   static CoreElement span([String text]) => new CoreElement('span', text: text);
 
@@ -190,7 +191,7 @@ class CoreElement extends WebElement {
   String get transitions => attribute('transitions');
   set transitions(String value) => setAttribute('transitions', value);
 
-  Stream get onTap => listen('tap');
+  Stream get onTap => listen('tap', sync: true);
 
   // Layout types.
   void layout() => toggleAttribute('layout');
@@ -221,9 +222,9 @@ class CoreElement extends WebElement {
     return _proxy[name];
   }
 
-  Stream listen(String eventName, [Function converter]) {
+  Stream listen(String eventName, {Function converter, bool sync: false}) {
     if (!_eventStreams.containsKey(eventName)) {
-      StreamController controller = new StreamController.broadcast();
+      StreamController controller = new StreamController.broadcast(sync: sync);
       _eventStreams[eventName] = controller.stream;
       element.on[eventName].listen((e) {
         controller.add(converter == null ? e : converter(e));
@@ -235,7 +236,11 @@ class CoreElement extends WebElement {
 }
 
 class Transitions {
-  static void slideFromRight(CoreElement parent) => _add(parent, 'slide-from-right');
+  static void coreTransitionCenter(CoreElement parent) =>
+      _add(parent, 'core-transition-center');
+
+  static void slideFromRight(CoreElement parent) =>
+      _add(parent, 'slide-from-right');
 
   static void _add(CoreElement parent, String transitionId) {
     String t = parent.transitions;

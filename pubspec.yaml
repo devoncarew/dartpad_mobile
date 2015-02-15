@@ -13,5 +13,9 @@ dependencies:
     path: ../dart-pad
   dart_to_js_script_rewriter: '>= 0.1.0 < 0.2.0'
 
+dev_dependencies:
+  grinder: any
+  librato: any
+
 transformers:
 - dart_to_js_script_rewriter

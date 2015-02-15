@@ -72,6 +72,7 @@ class Polymer {
 
     if (name.startsWith('core-') || name.startsWith('paper-')) {
       // TODO: Is this a reliable test?
+      // TODO: This only works on platforms that natively support shadow dom.
       if (element.shadowRoot == null) {
         result.add(name);
       }

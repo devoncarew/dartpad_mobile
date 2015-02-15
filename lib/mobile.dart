@@ -48,7 +48,9 @@ class PlaygroundMobile {
   Future _analysisRequest;
   Router _router;
 
-  PaperToast _toast;
+  PaperToast _messageToast;
+  PaperToast _errorsToast;
+  PaperActionDialog _errorDialog;
   CoreElement _output;
   CoreAnimatedPages _pages;
   PaperProgress _editProgress;
@@ -108,8 +110,22 @@ class PlaygroundMobile {
     _pages.add(_createEditSection(_pages));
     _pages.add(_createExecuteSection(_pages));
 
-    _toast = new PaperToast();
-    document.body.children.add(_toast.element);
+    _messageToast = new PaperToast();
+    document.body.children.add(_messageToast.element);
+
+    _errorsToast = new PaperToast()
+      ..swipeDisabled = true
+      ..autoCloseDisabled = true
+      ..duration = 100000;
+    document.body.children.add(_errorsToast.element);
+
+    _errorDialog = new PaperActionDialog();
+    PaperButton closeButton = new PaperButton(text: 'Close')..raised = true;
+    _errorDialog.makeAffirmative(closeButton);
+    _errorDialog.add(closeButton);
+    Transitions.coreTransitionCenter(_errorDialog);
+    _errorDialog.add(CoreElement.p());
+    document.body.children.add(_errorDialog.element);
   }
 
   CoreElement _createEditSection(CoreAnimatedPages pages) {
@@ -258,7 +274,7 @@ class PlaygroundMobile {
       });
     }).catchError((e) {
       print('Error loading gist ${gistId}.\n${e}');
-      _showError('Error loading gist ${gistId}.\n${e}');
+      _showError('Error Loading Gist', '${gistId} - ${e}');
     });
   }
 
@@ -346,7 +362,7 @@ class PlaygroundMobile {
           _context.htmlSource, _context.cssSource, result.output);
     }).catchError((e) {
       _showOuput('Error compiling to JavaScript:\n${e}', error: true);
-      _showError('Error compiling to JavaScript:\n${e}');
+      _showError('Error compiling to JavaScript', '${e}');
     }).whenComplete(() {
       runButton.disabled = false;
       _editProgress.hidden(true);
@@ -452,21 +468,12 @@ class PlaygroundMobile {
   }
 
   void _displayIssues(List<AnalysisIssue> issues) {
-    Element issuesElement = querySelector('#issues');
-
-    // Detect when hiding; don't remove the content until hidden.
-    bool isHiding = issuesElement.children.isNotEmpty && issues.isEmpty;
-
-    if (isHiding) {
-      issuesElement.classes.toggle('showing', issues.isNotEmpty);
-
-      StreamSubscription sub;
-      sub = issuesElement.onTransitionEnd.listen((_) {
-        issuesElement.children.clear();
-        sub.cancel();
-      });
+    if (issues.isEmpty) {
+      _errorsToast.dismiss();
     } else {
-      issuesElement.children.clear();
+      Element element = _errorsToast.element;
+
+      element.children.clear();
 
       issues.sort((a, b) => a.charStart - b.charStart);
 
@@ -474,7 +481,7 @@ class PlaygroundMobile {
       for (AnalysisIssue issue in issues) {
         DivElement e = new DivElement();
         e.classes.add('issue');
-        issuesElement.children.add(e);
+        element.children.add(e);
         e.onClick.listen((_) {
           _jumpTo(issue.line, issue.charStart, issue.charLength, focus: true);
         });
@@ -490,7 +497,7 @@ class PlaygroundMobile {
         e.children.add(messageSpan);
       }
 
-      issuesElement.classes.toggle('showing', issues.isNotEmpty);
+      _errorsToast.show();
     }
   }
 
@@ -505,13 +512,15 @@ class PlaygroundMobile {
   }
 
   void _showMessage(String message) {
-    _toast.text = message;
-    _toast.show();
+    _messageToast.text = message;
+    _messageToast.show();
   }
 
-  void _showError(String message) {
-    _toast.text = message;
-    _toast.show();
+  void _showError(String title, String message) {
+    _errorDialog.heading = title;
+    _errorDialog.element.querySelector('p').text = message;
+    //_errorDialog.open();
+    _errorDialog.toggle();
   }
 
   String _currentGistId() => _gistId;
