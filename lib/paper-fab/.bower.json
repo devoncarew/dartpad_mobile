@@ -21,6 +21,6 @@
     "commit": "8835b5b178eae468626d08d4861a327bfee29b06"
   },
   "_source": "git://github.com/Polymer/paper-fab.git",
-  "_target": "~0.5.2",
+  "_target": "^0.5",
   "_originalSource": "Polymer/paper-fab"
 }

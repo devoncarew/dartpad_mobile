@@ -9,8 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <!--
 `core-toolbar` is a horizontal bar containing items that can be used for
-label, navigation, search and actions.  The items place inside the
-`core-toolbar` are projected into a `horizontal center layout` container inside of
+label, navigation, search and actions.  The items place inside the 
+`core-toolbar` are projected into a `horizontal center layout` container inside of 
 `core-toolbar`'s Shadow DOM.  You can use flex attributes to control the items'
 sizing.
 
@@ -44,11 +44,11 @@ When `tall`, items can pin to either the top (default), middle or bottom.  Use
       <div class="middle indent">Middle Title</div>
       <div class="bottom indent">Bottom Title</div>
     </core-toolbar>
-
+    
 For `medium-tall` toolbar, the middle and bottom contents overlap and are
-pinned to the bottom.  But `middleJustify` and `bottomJustify` attributes are
+pinned to the bottom.  But `middleJustify` and `bottomJustify` attributes are 
 still honored separately.
-
+    
 To make an element completely fit at the bottom of the toolbar, use `fit` along
 with `bottom`.
 
@@ -89,7 +89,7 @@ on itself or any of its ancestors.
 (function() {
 
   Polymer('core-toolbar', {
-
+    
     /**
      * Controls how the items are aligned horizontally.
      * Options are `start`, `center`, `end`, `between` and `around`.
@@ -99,7 +99,7 @@ on itself or any of its ancestors.
      * @default ''
      */
     justify: '',
-
+    
     /**
      * Controls how the items are aligned horizontally when they are placed
      * in the middle.
@@ -110,7 +110,7 @@ on itself or any of its ancestors.
      * @default ''
      */
     middleJustify: '',
-
+    
     /**
      * Controls how the items are aligned horizontally when they are placed
      * at the bottom.
@@ -121,19 +121,19 @@ on itself or any of its ancestors.
      * @default ''
      */
     bottomJustify: '',
-
+    
     justifyChanged: function(old) {
       this.updateBarJustify(this.$.topBar, this.justify, old);
     },
-
+    
     middleJustifyChanged: function(old) {
       this.updateBarJustify(this.$.middleBar, this.middleJustify, old);
     },
-
+    
     bottomJustifyChanged: function(old) {
       this.updateBarJustify(this.$.bottomBar, this.bottomJustify, old);
     },
-
+    
     updateBarJustify: function(bar, justify, old) {
       if (old) {
         bar.removeAttribute(this.toLayoutAttrName(old));
@@ -142,11 +142,11 @@ on itself or any of its ancestors.
         bar.setAttribute(this.toLayoutAttrName(justify), '');
       }
     },
-
+    
     toLayoutAttrName: function(value) {
       return value === 'between' ? 'justified' : value + '-justified';
     }
-
+    
   });
 
 })();

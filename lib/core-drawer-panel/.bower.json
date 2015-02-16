@@ -14,6 +14,6 @@
     "commit": "5a650523eb8b798b88a3a3f4ab96a9b576e2f484"
   },
   "_source": "git://github.com/Polymer/core-drawer-panel.git",
-  "_target": "~0.5.2",
+  "_target": "^0.5",
   "_originalSource": "Polymer/core-drawer-panel"
 }

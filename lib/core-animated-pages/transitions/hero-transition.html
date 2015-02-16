@@ -34,6 +34,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   }
 </core-style>
 
+
 <!--
 
 `hero-transition` transforms two elements in different pages such that they appear
@@ -112,8 +113,8 @@ You can configure the duration of the hero transition with the global variable
         TRANSFORM_CSSNAME
       ];
 
-      var duration = options && options.duration ||
-          (CoreStyle.g.transitions.heroDuration ||
+      var duration = options && options.duration || 
+          (CoreStyle.g.transitions.heroDuration || 
           CoreStyle.g.transitions.duration);
 
       scope._heroes.forEach(function(h) {
@@ -216,7 +217,7 @@ You can configure the duration of the hero transition with the global variable
 
     // carefully look into ::shadow with polyfill specific hack
     findInShadows: function(node, selector) {
-      return node.querySelector(selector) || (hasShadowDOMPolyfill ?
+      return node.querySelector(selector) || (hasShadowDOMPolyfill ? 
           queryAllShadows(node, selector) :
           node.querySelector('::shadow ' + selector));
     },
@@ -259,6 +260,7 @@ You can configure the duration of the hero transition with the global variable
 
   });
 
+  
   // utility method for searching through shadowRoots.
   function queryShadow(node, selector) {
     var m, el = node.firstElementChild;

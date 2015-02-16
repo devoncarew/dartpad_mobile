@@ -28,11 +28,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     var toolbar = document.querySelector('core-toolbar');
 
     suite('basic', function() {
-
+      
       test('check default height', function() {
         assert.equal(toolbar.offsetHeight, 64);
       });
-
+      
       test('check medium-tall height', function(done) {
         toolbar.classList.add('medium-tall');
         asyncPlatformFlush(function() {
@@ -40,7 +40,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           done();
         });
       });
-
+      
       test('check tall height', function(done) {
         toolbar.classList.add('tall');
         asyncPlatformFlush(function() {
@@ -48,7 +48,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           done();
         });
       });
-
+      
       test('item at top', function(done) {
         var item = document.createElement('div');
         toolbar.appendChild(item)
@@ -57,7 +57,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           done();
         });
       });
-
+      
       test('item at middle', function(done) {
         var item = document.createElement('div');
         item.classList.add('middle');
@@ -67,7 +67,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           done();
         });
       });
-
+      
       test('item at bottom', function(done) {
         var item = document.createElement('div');
         item.classList.add('bottom');
@@ -77,7 +77,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           done();
         });
       });
-
+      
     });
 
   </script>

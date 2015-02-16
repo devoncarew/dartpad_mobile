@@ -14,7 +14,6 @@
     "commit": "408f2d2e759ab46978c8ddaac73a929b9d66c5a6"
   },
   "_source": "git://github.com/polymer/core-splitter.git",
-  "_target": "~0.5.4",
-  "_originalSource": "polymer/core-splitter",
-  "_direct": true
+  "_target": "^0.5",
+  "_originalSource": "polymer/core-splitter"
 }

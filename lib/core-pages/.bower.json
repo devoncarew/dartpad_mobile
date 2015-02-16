@@ -13,6 +13,6 @@
     "commit": "8000f8b2e77816638f832f383393d6d2dd15b4f0"
   },
   "_source": "git://github.com/Polymer/core-pages.git",
-  "_target": "~0.5.2",
+  "_target": "^0.5",
   "_originalSource": "Polymer/core-pages"
 }

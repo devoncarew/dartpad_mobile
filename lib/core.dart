@@ -235,16 +235,18 @@ class CoreElement extends WebElement {
   }
 }
 
+class Transition {
+  static void coreTransitionCenter(CoreElement element) =>
+      element.setAttribute('transition', 'core-transition-center');
+}
+
 class Transitions {
-  static void coreTransitionCenter(CoreElement parent) =>
-      _add(parent, 'core-transition-center');
+  static void slideFromRight(CoreElement element) =>
+      _add(element, 'slide-from-right');
 
-  static void slideFromRight(CoreElement parent) =>
-      _add(parent, 'slide-from-right');
-
-  static void _add(CoreElement parent, String transitionId) {
-    String t = parent.transitions;
+  static void _add(CoreElement element, String transitionId) {
+    String t = element.transitions;
     t = t == null ? transitionId : '${t} ${transitionId}';
-    parent.transitions = t;
+    element.transitions = t;
   }
 }

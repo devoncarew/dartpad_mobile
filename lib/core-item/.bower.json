@@ -14,7 +14,6 @@
     "commit": "bda0b8eb32bd090031a5616823f533f130d9258a"
   },
   "_source": "git://github.com/polymer/core-item.git",
-  "_target": "~0.5.4",
-  "_originalSource": "polymer/core-item",
-  "_direct": true
+  "_target": "^0.5",
+  "_originalSource": "polymer/core-item"
 }

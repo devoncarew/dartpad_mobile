@@ -41,7 +41,7 @@ Example:
       </core-header-panel>
     </core-drawer-panel>
 
-An element that should toggle the drawer will automatically do so if it's
+An element that should toggle the drawer will automatically do so if it's 
 given the `core-drawer-toggle` attribute.  Also this element will automatically
 be hidden in wide layout.
 
@@ -111,14 +111,14 @@ To position the drawer to the right, add `rightDrawer` attribute.
      * @param {Object} detail
      * @param {boolean} detail.narrow true if the panel is in narrow layout.
      */
-
+     
     /**
      * Fired when the selected panel changes.
-     *
+     * 
      * Listening for this event is an alternative to observing changes in the `selected` attribute.
      * This event is fired both when a panel is selected and deselected.
      * The `isSelected` detail property contains the selection state.
-     *
+     * 
      * @event core-select
      * @param {Object} detail
      * @param {boolean} detail.isSelected true for selection and false for deselection
@@ -192,7 +192,7 @@ To position the drawer to the right, add `rightDrawer` attribute.
        * @default false
        */
       disableSwipe: false,
-
+      
       /**
        * If true, ignore `responsiveWidth` setting and force the narrow layout.
        *
@@ -201,7 +201,7 @@ To position the drawer to the right, add `rightDrawer` attribute.
        * @default false
        */
       forceNarrow: false,
-
+      
       /**
        * If true, swipe from the edge is disable.
        *
@@ -238,8 +238,8 @@ To position the drawer to the right, add `rightDrawer` attribute.
 
     // Whether the browser has support for the will-change CSS property.
     hasWillChange: true,
-
-    // The attribute on elements that should toggle the drawer on tap, also
+    
+    // The attribute on elements that should toggle the drawer on tap, also 
     // elements will automatically be hidden in wide layout.
     toggleAttribute: 'core-drawer-toggle',
 
@@ -292,7 +292,7 @@ To position the drawer to the right, add `rightDrawer` attribute.
       this.setAttribute('touch-action', this.swipeAllowed() ? 'pan-y' : '');
       this.fire('core-responsive-change', {narrow: this.narrow});
     },
-
+    
     forceNarrowChanged: function() {
       this.queryMatchesChanged();
     },
@@ -300,7 +300,7 @@ To position the drawer to the right, add `rightDrawer` attribute.
     swipeAllowed: function() {
       return this.narrow && !this.disableSwipe;
     },
-
+    
     isMainSelected: function() {
       return this.selected === 'main';
     },
@@ -328,9 +328,9 @@ To position the drawer to the right, add `rightDrawer` attribute.
     upHandler: function(e) {
       this.stopEdgePeak();
     },
-
+    
     tapHandler: function(e) {
-      if (e.target && this.toggleAttribute &&
+      if (e.target && this.toggleAttribute && 
           e.target.hasAttribute(this.toggleAttribute)) {
         this.togglePanel();
       }
@@ -398,7 +398,7 @@ To position the drawer to the right, add `rightDrawer` attribute.
       if (translateX === null) {
         return '';
       }
-      return this.hasWillChange ? 'translateX(' + translateX + 'px)' :
+      return this.hasWillChange ? 'translateX(' + translateX + 'px)' : 
           'translate3d(' + translateX + 'px, 0, 0)';
     },
 

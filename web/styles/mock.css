@@ -50,12 +50,17 @@ paper-fab {
   background-color: #37474f;*/
 }
 
+paper-dropdown div#background,
 paper-dropdown::shadow #background {
   background-color: #37474f;
 }
 
 paper-item.core-selected {
   background-color: #263238;
+}
+
+paper-item {
+  color: #c6c6c6;
 }
 
 paper-tabs::shadow #selectionBar {

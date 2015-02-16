@@ -17,7 +17,6 @@
     "commit": "806c29a99697d7eb82e7bcc775253a130cff33f3"
   },
   "_source": "git://github.com/polymer/core-animated-pages.git",
-  "_target": "~0.5.4",
-  "_originalSource": "polymer/core-animated-pages",
-  "_direct": true
+  "_target": "^0.5",
+  "_originalSource": "polymer/core-animated-pages"
 }

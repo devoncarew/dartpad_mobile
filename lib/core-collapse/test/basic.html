@@ -28,14 +28,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </core-collapse>
 
   <script>
-
+  
     function getCollapseComputedStyle() {
       var c = document.querySelector('#collapse');
       return getComputedStyle(c);
     }
 
     var collapse = document.querySelector('#collapse');
-
+    
     var delay = 200;
     var collapseHeight;
 
@@ -44,7 +44,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       test('verify attribute', function() {
         assert.equal(collapse.opened, true);
       });
-
+      
       test('verify height', function(done) {
         Polymer.flush();
         setTimeout(function() {
@@ -54,7 +54,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           done();
         }, delay);
       });
-
+      
       test('test opened: false', function(done) {
         collapse.opened = false;
         Polymer.flush();
@@ -65,7 +65,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           done();
         }, delay);
       });
-
+      
       test('test opened: true', function(done) {
         collapse.opened = true;
         Polymer.flush();

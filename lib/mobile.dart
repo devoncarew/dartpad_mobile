@@ -119,19 +119,20 @@ class PlaygroundMobile {
       ..duration = 100000;
     document.body.children.add(_errorsToast.element);
 
+    // TODO: use a dark theme?
     _errorDialog = new PaperActionDialog();
-    PaperButton closeButton = new PaperButton(text: 'Close')..raised = true;
+    PaperButton closeButton = new PaperButton(text: 'Close');
     _errorDialog.makeAffirmative(closeButton);
     _errorDialog.add(closeButton);
-    Transitions.coreTransitionCenter(_errorDialog);
+    Transition.coreTransitionCenter(_errorDialog);
     _errorDialog.add(CoreElement.p());
     document.body.children.add(_errorDialog.element);
   }
 
   CoreElement _createEditSection(CoreAnimatedPages pages) {
-    CoreElement section = CoreElement.section()..fit();
+    CoreElement section = CoreElement.section();
 
-    CoreDrawerPanel topPanel = new CoreDrawerPanel()..forceNarrow()..fit();
+    CoreDrawerPanel topPanel = new CoreDrawerPanel()..forceNarrow();
     section.add(topPanel);
 
     // drawer
@@ -147,7 +148,7 @@ class PlaygroundMobile {
     headerPanel.add(menu);
 
     // main
-    CoreHeaderPanel mainPanel = new CoreHeaderPanel()..fit();
+    CoreHeaderPanel mainPanel = new CoreHeaderPanel();
     topPanel.makeMain(mainPanel);
     topPanel.add(mainPanel);
     toolbar = new CoreToolbar()..id = 'main-header';
@@ -161,12 +162,18 @@ class PlaygroundMobile {
     overflowMenuButton.add(new PaperIconButton(icon: 'more-vert'));
     PaperDropdown dropdown = new PaperDropdown()..halign = 'right';
     CoreMenu overflowMenu = new CoreMenu();
-    overflowMenu.add(
-        new PaperItem(text: 'Share')..onTap.listen((_) => _showMessage('TODO: share')));
-    overflowMenu.add(
-        new PaperItem(text: 'Settings')..onTap.listen((_) => _showMessage('TODO: settings')));
-    overflowMenu.add(
-        new PaperItem(text: 'Help')..onTap.listen((_) => _showMessage('TODO: help')));
+    overflowMenu.add(new PaperItem(text: 'Share')..onTap.listen((event) {
+      event.preventDefault();
+      _showMessage('TODO: share');
+    }));
+    overflowMenu.add(new PaperItem(text: 'Settings')..onTap.listen((event) {
+      event.preventDefault();
+      _showMessage('TODO: settings');
+    }));
+    overflowMenu.add(new PaperItem(text: 'Help')..onTap.listen((event) {
+      event.preventDefault();
+      _showMessage('TODO: help');
+    }));
     dropdown.add(overflowMenu);
     overflowMenuButton.add(dropdown);
     toolbar.add(overflowMenuButton);
@@ -203,7 +210,7 @@ class PlaygroundMobile {
   }
 
   CoreElement _createExecuteSection(CoreAnimatedPages pages) {
-    CoreElement section = CoreElement.section()..fit();
+    CoreElement section = CoreElement.section();
 
     CoreHeaderPanel header = new CoreHeaderPanel()..fit();
     section.add(header);
@@ -519,8 +526,8 @@ class PlaygroundMobile {
   void _showError(String title, String message) {
     _errorDialog.heading = title;
     _errorDialog.element.querySelector('p').text = message;
-    //_errorDialog.open();
-    _errorDialog.toggle();
+    _errorDialog.open();
+    //_errorDialog.toggle();
   }
 
   String _currentGistId() => _gistId;

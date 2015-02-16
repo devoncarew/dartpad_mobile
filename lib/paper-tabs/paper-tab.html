@@ -18,7 +18,7 @@ Example:
       <paper-tab>TAB 2</paper-tab>
       <paper-tab>TAB 3</paper-tab>
     </paper-tabs>
-
+    
 Styling tab:
 
 To change the ink color:
@@ -38,15 +38,15 @@ To change the ink color:
 <template>
 
   <link rel="stylesheet" href="paper-tab.css">
-
+  
   <div class="tab-content" flex auto center-center horizontal layout><content></content></div>
   <paper-ripple id="ink" initialOpacity="0.95" opacityDecayVelocity="0.98"></paper-ripple>
-
+  
 </template>
 <script>
 
   Polymer('paper-tab', {
-
+    
     /**
      * If true, ink ripple effect is disabled.
      *
@@ -55,7 +55,7 @@ To change the ink color:
      * @default false
      */
     noink: false,
-
+    
     eventDelegates: {
       down: 'downAction',
       up: 'upAction'
@@ -71,12 +71,12 @@ To change the ink color:
     upAction: function() {
       this.$.ink.upAction();
     },
-
+    
     cancelRipple: function() {
       this.$.ink.upAction();
     }
-
+    
   });
-
+  
 </script>
 </polymer-element>

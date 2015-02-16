@@ -9,6 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link href="core-transition-pages.html" rel="import">
 
+
 <core-style id="list-cascade">
   polyfill-next-selector { content: ':host.list-cascade > * [list-cascade]'; }
   :host(.list-cascade) ::content > * [list-cascade] * {
@@ -46,7 +47,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     -webkit-transition-delay: 0.3s;
     transition-delay: 0.3s;
   }
-
+  
   polyfill-next-selector { content: ':host > .core-selected [list-cascade] *:nth-child(5)'; }
   ::content > .core-selected [list-cascade] *:nth-child(5) {
     -webkit-transition-delay: 0.4s;

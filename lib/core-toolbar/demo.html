@@ -32,7 +32,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       color: #f1f1f1;
       fill: #f1f1f1;
     }
-
+    
   </style>
 
 </head>
@@ -71,9 +71,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <core-icon-button icon="refresh" class="bottom"></core-icon-button>
     <core-icon-button icon="add" class="bottom"></core-icon-button>
   </core-toolbar>
-
+  
   <br>
-
+  
   <core-toolbar class="medium-tall">
     <core-icon-button icon="menu"></core-icon-button>
     <span flex></span>
@@ -83,7 +83,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </core-toolbar>
 
   <br>
-
+  
   <core-toolbar class="tall">
     <core-icon-button icon="menu"></core-icon-button>
     <div flex></div>
@@ -92,9 +92,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="middle indent">label aligns to the middle</div>
     <div class="bottom indent" style="color: #666; font-size: 18px;">some stuffs align to the bottom</div>
   </core-toolbar>
-
+  
   <br>
-
+  
   <core-toolbar class="tall">
     <core-icon-button icon="menu"></core-icon-button>
     <div flex></div>
@@ -103,17 +103,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <div class="middle indent">element (e.g. progress) fits at the bottom of the toolbar</div>
     <div class="bottom fit" style="height: 20px; background-color: #0f9d58;"></div>
   </core-toolbar>
-
+  
   <core-media-query id="mediaQuery" query="max-width: 640px"></core-media-query>
-
+  
   <script>
-
+  
     document.querySelector('#mediaQuery').addEventListener('core-media-change',
       function(e) {
         document.body.classList.toggle('core-narrow', e.detail.matches);
       });
-
+  
   </script>
-
+  
 </body>
 </html>
