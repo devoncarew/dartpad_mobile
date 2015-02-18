@@ -11,9 +11,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <meta name="scaffolded-by" content="https://github.com/google/stagehand">
-    <title>Dart Pad Mock</title>
+    <title>Dart Pad</title>
 
     <script src="packages/dartpad_mobile/webcomponentsjs/webcomponents.min.js"></script>
+    <!-- script src="packages/dartpad_mobile/webcomponentsjs/webcomponents.js"></script -->
 
     <link rel="import" href="packages/dartpad_mobile/core-animated-pages/core-animated-pages.html">
     <link rel="import" href="packages/dartpad_mobile/core-animated-pages/transitions/slide-from-right.html">
@@ -97,6 +98,7 @@
 <body fullbleed vertical layout unresolved>
   <div class="splash"></div>
   <script src="packages/codemirror/codemirror.js"></script>
+  <script src="packages/browser/dart.js" async></script>
   <script type="application/dart" src="main.dart"></script>
   <script async>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -106,6 +108,29 @@
 
     ga('create', 'UA-26406144-18', 'auto');
     ga('send', 'pageview');
+  </script>
+  <script>
+    /* Patch to work around a polymer polyfill issue. */
+
+    // Patch key event listening.
+    document.addEventListener('keydown', function(event) {
+      if (dartKeyListener) {
+        if (dartKeyListener(event)) {
+          event.preventDefault();
+        }
+      }
+    });
+
+    // Patch window message listening.
+    window.addEventListener('message', function(event) {
+      var data = event.data;
+
+      if (data.sender == 'frame') {
+        if (dartMessageListener) {
+          dartMessageListener(data);
+        }
+      }
+    });
   </script>
 </body>
 
