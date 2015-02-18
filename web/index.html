@@ -114,8 +114,8 @@
 
     // Patch key event listening.
     document.addEventListener('keydown', function(event) {
-      if (dartKeyListener) {
-        if (dartKeyListener(event)) {
+      if (window.dartKeyListener) {
+        if (window.dartKeyListener(event)) {
           event.preventDefault();
         }
       }
@@ -126,8 +126,8 @@
       var data = event.data;
 
       if (data.sender == 'frame') {
-        if (dartMessageListener) {
-          dartMessageListener(data);
+        if (window.dartMessageListener) {
+          window.dartMessageListener(data);
         }
       }
     });
