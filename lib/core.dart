@@ -52,10 +52,22 @@ class CoreHeaderPanel extends CoreElement {
   CoreHeaderPanel.from(HtmlElement element) : super.from(element);
 }
 
+class CoreIcon extends CoreElement {
+  CoreIcon({String icon, String src}) : super('core-item') {
+    if (icon != null) this.icon = icon;
+    if (src != null) this.src = src;
+  }
+
+  CoreIcon.from(HtmlElement element) : super.from(element);
+
+  String get src => attribute('src');
+  set src(String value) => setAttribute('src', value);
+}
+
 class CoreItem extends CoreElement {
   CoreItem({String icon, String label}) : super('core-item') {
-    if (label != null) this.label = label;
     if (icon != null) this.icon = icon;
+    if (label != null) this.label = label;
   }
 
   CoreItem.from(HtmlElement element) : super.from(element);
@@ -190,6 +202,9 @@ class CoreElement extends WebElement {
 
   String get transitions => attribute('transitions');
   set transitions(String value) => setAttribute('transitions', value);
+
+  bool get disabled => hasAttribute('disabled');
+  set disabled(bool value) => toggleAttribute('disabled', value);
 
   Stream get onTap => listen('tap', sync: true);
 

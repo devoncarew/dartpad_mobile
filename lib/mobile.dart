@@ -40,6 +40,7 @@ void init() {
 
 class PlaygroundMobile {
   PaperFab runButton;
+  PaperIconButton rerunButton;
 
   BusyLight dartBusyLight;
 
@@ -228,17 +229,13 @@ class PlaygroundMobile {
     toolbar.add(CoreElement.span()..clazz('sample-titles')..flex());
     PaperToggleButton toggleConsoleButton = new PaperToggleButton()..checked = true;
     toolbar.add(toggleConsoleButton);
-    PaperIconButton reRunButton = new PaperIconButton(icon: 'refresh');
-    toolbar.add(reRunButton);
+    rerunButton = new PaperIconButton(icon: 'refresh');
+    toolbar.add(rerunButton);
     _runProgress = new PaperProgress()..clazz('bottom fit')..hidden();
     toolbar.add(_runProgress);
     header.add(toolbar);
 
-    // TODO:
-    reRunButton.onClick.listen((_) {
-      _runProgress.indeterminate = !_runProgress.indeterminate;
-      _runProgress.hidden();
-    });
+    rerunButton.onClick.listen((_) => _handleRerun());
 
     CoreElement content = CoreElement.div()..fit()..layout()..vertical();
     header.add(content);
@@ -358,9 +355,9 @@ class PlaygroundMobile {
     _editProgress.indeterminate = true;
     _editProgress.hidden(false);
 
-    _clearOutput();
-
     compilerService.compile(context.dartSource).then((CompilerResult result) {
+      _clearOutput();
+
       // TODO: Use the router here instead -
       _pages.selected = '1';
       //_router.go('gist', {'gist': _currentGistId()});
@@ -374,6 +371,32 @@ class PlaygroundMobile {
       runButton.disabled = false;
       _editProgress.hidden(true);
       _editProgress.indeterminate = false;
+    });
+  }
+
+  void _handleRerun() {
+    ga.sendEvent('main', 'rerun');
+    rerunButton.disabled = true;
+
+    _runProgress.indeterminate = true;
+    _runProgress.hidden(false);
+
+    compilerService.compile(context.dartSource).then((CompilerResult result) {
+      _clearOutput();
+
+      // TODO: Use the router here instead -
+      _pages.selected = '1';
+      //_router.go('gist', {'gist': _currentGistId()});
+
+      return executionService.execute(
+          _context.htmlSource, _context.cssSource, result.output);
+    }).catchError((e) {
+      _showOuput('Error compiling to JavaScript:\n${e}', error: true);
+      _showError('Error compiling to JavaScript', '${e}');
+    }).whenComplete(() {
+      rerunButton.disabled = false;
+      _runProgress.hidden(true);
+      _runProgress.indeterminate = false;
     });
   }
 

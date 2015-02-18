@@ -58,9 +58,6 @@ class PaperFab extends PaperButtonBase {
 
   PaperFab.from(HtmlElement element) : super.from(element);
 
-  bool get disabled => hasAttribute('disabled');
-  set disabled(bool value) => toggleAttribute('disabled', value);
-
   bool get mini => hasAttribute('mini');
   set mini(bool value) => toggleAttribute('mini', value);
 }
