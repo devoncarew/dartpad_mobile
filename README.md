@@ -1,3 +1,3 @@
-# Dartpad Mobile
+# Dart Pad Mobile
 
-Exploratory UI for Dartpad on mobile.
+Exploratory UI for Dart Pad on mobile.
