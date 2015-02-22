@@ -5,17 +5,15 @@ import 'dart:async';
 import 'dart:html' hide Document;
 
 import 'package:dart_pad/dart_pad.dart';
+import 'package:dart_pad/dartservices_client/v1.dart';
 import 'package:dart_pad/context.dart';
 import 'package:dart_pad/core/dependencies.dart';
 import 'package:dart_pad/core/modules.dart';
 import 'package:dart_pad/editing/editor.dart';
 import 'package:dart_pad/modules/codemirror_module.dart';
+import 'package:dart_pad/modules/dartservices_module.dart';
 import 'package:dart_pad/modules/dart_pad_module.dart';
-import 'package:dart_pad/modules/server_analysis.dart';
-import 'package:dart_pad/modules/server_compiler.dart';
-import 'package:dart_pad/services/analysis.dart';
 import 'package:dart_pad/services/common.dart';
-import 'package:dart_pad/services/compiler.dart';
 import 'package:dart_pad/services/execution_iframe.dart';
 import 'package:dart_pad/src/ga.dart';
 import 'package:dart_pad/src/gists.dart';
@@ -269,7 +267,7 @@ class PlaygroundMobile {
       GistFile css = chooseGistFile(gist, ['styles.css', 'style.css']);
 
       context.dartSource = dart == null ? '' : dart.contents;
-      context.htmlSource = html == null ? '' : html.contents;
+      context.htmlSource = html == null ? '' : extractHtmlBody(html.contents);
       context.cssSource = css == null ? '' : css.contents;
 
       // Analyze and run it.
@@ -285,9 +283,8 @@ class PlaygroundMobile {
   Future _initModules() {
     modules.register(new DartPadModule());
     //modules.register(new MockAnalysisModule());
-    modules.register(new ServerAnalysisModule());
     //modules.register(new MockCompilerModule());
-    modules.register(new ServerCompilerModule());
+    modules.register(new DartServicesModule());
     //modules.register(new AceModule());
     modules.register(new CodeMirrorModule());
 
@@ -355,7 +352,8 @@ class PlaygroundMobile {
     _editProgress.indeterminate = true;
     _editProgress.hidden(false);
 
-    compilerService.compile(context.dartSource).then((CompilerResult result) {
+    var input = new SourceRequest()..source = context.dartSource;
+    dartServices.compile(input).then((CompileResponse response) {
       _clearOutput();
 
       // TODO: Use the router here instead -
@@ -363,7 +361,7 @@ class PlaygroundMobile {
       //_router.go('gist', {'gist': _currentGistId()});
 
       return executionService.execute(
-          _context.htmlSource, _context.cssSource, result.output);
+          _context.htmlSource, _context.cssSource, response.result);
     }).catchError((e) {
       _showOuput('Error compiling to JavaScript:\n${e}', error: true);
       _showError('Error compiling to JavaScript', '${e}');
@@ -381,7 +379,8 @@ class PlaygroundMobile {
     _runProgress.indeterminate = true;
     _runProgress.hidden(false);
 
-    compilerService.compile(context.dartSource).then((CompilerResult result) {
+    var input = new SourceRequest()..source = context.dartSource;
+    dartServices.compile(input).then((CompileResponse response) {
       _clearOutput();
 
       // TODO: Use the router here instead -
@@ -389,7 +388,7 @@ class PlaygroundMobile {
       //_router.go('gist', {'gist': _currentGistId()});
 
       return executionService.execute(
-          _context.htmlSource, _context.cssSource, result.output);
+          _context.htmlSource, _context.cssSource, response.result);
     }).catchError((e) {
       _showOuput('Error compiling to JavaScript:\n${e}', error: true);
       _showError('Error compiling to JavaScript', '${e}');
@@ -401,10 +400,10 @@ class PlaygroundMobile {
   }
 
   void _performAnalysis() {
-    String source = _context.dartSource;
-    Lines lines = new Lines(source);
+    var input = new SourceRequest()..source = _context.dartSource;
+    Lines lines = new Lines(input.source);
 
-    Future request = analysisService.analyze(source);
+    Future<AnalysisResults> request = dartServices.analyze(input);
 
     _analysisRequest = request;
 
@@ -413,7 +412,7 @@ class PlaygroundMobile {
       if (_analysisRequest != request) return;
 
       // Discard if the document has been mutated since we requested analysis.
-      if (source != _context.dartSource) return;
+      if (input.source != _context.dartSource) return;
 
       dartBusyLight.reset();
 
@@ -453,16 +452,16 @@ class PlaygroundMobile {
       Position pos = editor.document.cursor;
       int offset = editor.document.indexFromPos(pos);
 
-      // TODO: Show busy.
-      analysisService.getDocumentation(source, offset).then((Map result) {
-        if (result['description'] == null && result['dartdoc'] == null) {
-          // TODO: Tell the user there were no results.
-
-        } else {
-          // TODO: Display this info
-          print(result['description']);
-        }
-      });
+//      // TODO: Show busy.
+//      dartServices.document(source, offset).then((Map result) {
+//        if (result['description'] == null && result['dartdoc'] == null) {
+//          // TODO: Tell the user there were no results.
+//
+//        } else {
+//          // TODO: Display this info
+//          print(result['description']);
+//        }
+//      });
     }
   }
 
