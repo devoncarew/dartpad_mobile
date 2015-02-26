@@ -157,25 +157,25 @@ class PlaygroundMobile {
     toolbar.add(CoreElement.span()..clazz('sample-titles')..flex());
 
     // Overflow menu.
-    PaperMenuButton overflowMenuButton = new PaperMenuButton();
-    overflowMenuButton.add(new PaperIconButton(icon: 'more-vert'));
-    PaperDropdown dropdown = new PaperDropdown()..halign = 'right';
-    CoreMenu overflowMenu = new CoreMenu();
-    overflowMenu.add(new PaperItem(text: 'Share')..onTap.listen((event) {
-      event.preventDefault();
-      _showMessage('TODO: share');
-    }));
-    overflowMenu.add(new PaperItem(text: 'Settings')..onTap.listen((event) {
-      event.preventDefault();
-      _showMessage('TODO: settings');
-    }));
-    overflowMenu.add(new PaperItem(text: 'Help')..onTap.listen((event) {
-      event.preventDefault();
-      _showMessage('TODO: help');
-    }));
-    dropdown.add(overflowMenu);
-    overflowMenuButton.add(dropdown);
-    toolbar.add(overflowMenuButton);
+//    PaperMenuButton overflowMenuButton = new PaperMenuButton();
+//    overflowMenuButton.add(new PaperIconButton(icon: 'more-vert'));
+//    PaperDropdown dropdown = new PaperDropdown()..halign = 'right';
+//    CoreMenu overflowMenu = new CoreMenu();
+//    overflowMenu.add(new PaperItem(text: 'Share')..onTap.listen((event) {
+//      event.preventDefault();
+//      _showMessage('TODO: share');
+//    }));
+//    overflowMenu.add(new PaperItem(text: 'Settings')..onTap.listen((event) {
+//      event.preventDefault();
+//      _showMessage('TODO: settings');
+//    }));
+//    overflowMenu.add(new PaperItem(text: 'Help')..onTap.listen((event) {
+//      event.preventDefault();
+//      _showMessage('TODO: help');
+//    }));
+//    dropdown.add(overflowMenu);
+//    overflowMenuButton.add(dropdown);
+//    toolbar.add(overflowMenuButton);
 
     CoreElement div = CoreElement.div()..clazz('bottom fit')..horizontal()..vertical();
     PaperTabs tabs = new PaperTabs()..flex();

@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 
-<!--
-  Copyright (c) 2014, <your name>. All rights reserved. Use of this source code
-  is governed by a BSD-style license that can be found in the LICENSE file.
--->
+<!-- Copyright (c) 2015, the Dart project authors.  Please see the AUTHORS file
+     for details. All rights reserved. Use of this source code is governed by a
+     BSD-style license that can be found in the LICENSE file. -->
 
 <html>
 <head>
@@ -14,7 +13,6 @@
     <title>Dart Pad</title>
 
     <script src="packages/dartpad_mobile/webcomponentsjs/webcomponents.min.js"></script>
-    <!-- script src="packages/dartpad_mobile/webcomponentsjs/webcomponents.js"></script -->
 
     <link rel="import" href="packages/dartpad_mobile/core-animated-pages/core-animated-pages.html">
     <link rel="import" href="packages/dartpad_mobile/core-animated-pages/transitions/slide-from-right.html">
@@ -48,10 +46,16 @@
     <link href="packages/dart_pad/editing/editor_codemirror.css" rel="stylesheet" media="screen">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="styles/main.css">
-    <!-- shim-shadowdom -->
-    <link rel="stylesheet" href="styles/mock.css">
+    <link rel="stylesheet" href="styles/mobile.css">
     <style>
+      html, body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', 'RobotoDraft', sans-serif;
+      }
+
       .content {
         padding: 20px;
       }
